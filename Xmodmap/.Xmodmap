@@ -1,0 +1,3 @@
+keycode 94 = Shift_L Shift_L Shift_L
+clear Lock
+keysym Caps_Lock = Escape Escape Escape Escape
