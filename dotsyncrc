@@ -68,7 +68,7 @@ vim/dotvim:.vim
 vim/vimrc
 #vim/gvimrc
 wget/wgetrc
-Xmodmap
+Xmodmap/Xmodmap
 zsh/fasdrc
 zsh/dotzsh:.zsh
 zsh/zlogin
