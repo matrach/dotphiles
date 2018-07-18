@@ -1,0 +1,121 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+#export TERM=xterm
+export TERM=xterm-256color
+
+
+export HISTCONTROL=ignoreboth
+shopt -s histappend
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+shopt -s cdspell
+
+alias vi='vim'
+export EDITOR=vim
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+
+if [ -x /usr/bin/dircolors ]; then
+ eval "`dircolors -b`"
+ alias ls='ls --color=auto'
+ alias ll='ls -l'
+ alias l='ls -F'
+ alias sl='ls'
+ alias py='ipython'
+ alias psh='ipython --profile=pysh'
+ alias grep='grep --color=auto'
+ alias fgrep='fgrep --color=auto'
+ alias egrep='egrep --color=auto'
+fi
+alias g='git'
+alias br='git br'
+alias co='git co'
+alias st='git st'
+alias l1='git l1'
+alias gdf='git df'
+alias gst='git st'
+alias gsmt='/usr/bin/gst'
+alias fg='fgrep -nRiI'
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+if [[ ${EUID} == 0 ]] ; then
+ PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+else
+ #PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+ PS1='\[\033[38;5;214m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+fi
+
+
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+#umask 0077
+
+SDK=$HOME/Android/Sdk
+export PATH=$PATH:/usr/sbin:/usr/local/sbin:/sbin:$HOME/bin:$SDK/tools:$SDK/platform-tools:$SDK/:$HOME/.local/bin
+
+
+PROMPT_DIRTRIM=2
+
+export `gnome-keyring-daemon --start`
+
+# added by Anaconda3 2.5.0 installer
+export PATH="/home/matrach/anaconda3/bin:$PATH"
+
+if which powerline >/dev/null; then
+  POWERLINE_ROOT="$HOME/.local/lib/python2.7/site-packages/"
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . $POWERLINE_ROOT/powerline/bindings/bash/powerline.sh
+fi
