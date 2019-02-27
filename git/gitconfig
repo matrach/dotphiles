@@ -54,6 +54,7 @@
 [core]
     pager = less -FRSX
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	autocrlf = input
 
 [diff]
     tool = vimdiff
@@ -166,3 +167,5 @@
 [url "git@github.com:"]
     insteadof = github:
 
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh
