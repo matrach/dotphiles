@@ -117,6 +117,7 @@ Bundle 'rmartinjak/vim-nesc'
 Bundle 'mhinz/vim-startify'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'dhruvasagar/vim-table-mode'
+Plugin 'ARM9/arm-syntax-vim'
 
 Bundle 'ervandew/supertab'
 

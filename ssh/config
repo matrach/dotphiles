@@ -28,3 +28,22 @@ Host *
     #ControlPath ~/.ssh/master/%r@%h:%p
     #ControlPersist 8h
 
+Host duch
+    Hostname duch.mimuw.edu.pl
+    User mm319369
+
+Host grail-cpu2
+    Hostname 192.168.44.244
+    User matraszek
+
+Host heni
+    Hostname heni.mimuw.edu.pl
+    User matrach
+    IdentityFile ~/.ssh/heni
+
+
+Host 192.168.0.*
+    controlmaster auto
+    controlpath ~/.ssh/ssh-%r@%h:%p
+    ControlPersist 10s
+    KexAlgorithms +diffie-hellman-group14-sha1
